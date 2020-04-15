@@ -37,36 +37,3 @@ webinterfacelib_DATA =            \
 	webinterface/lib/PHPTail.php  \
 	webinterface/lib/Rest.inc.php \
 	webinterface/lib/Helper.inc.php
-
-include dashboard.mk
-
-dashboarddir = $(webinterfacedir)
-dashboard_DATA = webinterface/dashboard/dist/index.html \
-				 webinterface/dashboard/dist/favicon.ico
-
-# extra dist files
-EXTRA_DIST = $(apacheconf_DATA)       \
-			 $(softgredconf_DATA)     \
-			 $(webinterface_DATA)     \
-			 $(webinterfacelib_DATA)  \
-			 $(dashboard_DATA) 		  \
-			 $(dashboardfonts_DATA)   \
-			 $(dashboardimages_DATA)  \
-			 $(dashboardscripts_DATA) \
-			 $(dashboardstyles_DATA)  \
-			 $(dashboardviews_DATA)
-
-CLEANFILES = etc/softgred/softgred.conf \
-             etc/apache/softgred.conf   \
-			 webinterface/config.php    \
-			 webinterface/webinterface_config.php
-
-# dashboard
-#hook-dist: build-dashboard
-
-build-dashboard:
-	make -C webinterface/dashboard release
-	scripts/gen-dist-dashboard.sh > dashboard.mk
-
-#.PHONY: build-dashboard
-

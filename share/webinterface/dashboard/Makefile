@@ -1,4 +1,5 @@
 all:
+	npm update
 	npm install
 	bower install
 
