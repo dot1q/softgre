@@ -88,6 +88,7 @@ iplink_modify(int cmd,
     unsigned okey = 0;
     unsigned link = 0;
     uint8_t pmtudisc = 0; // pmtudisc=1, nopmtudisc=0
+    uint16_t mtu = SOFTGRED_TUN_MTU; // pmtudisc=1, nopmtudisc=0
     uint8_t ttl = 0; // 255?
     uint8_t tos = 0;
     int preferred_family = AF_PACKET;
@@ -144,6 +145,7 @@ iplink_modify(int cmd,
             addattr_l(&req.n, 1024, IFLA_GRE_LOCAL, &in_local->s_addr, 4);
             addattr_l(&req.n, 1024, IFLA_GRE_REMOTE, &in_remote->s_addr, 4);
             addattr_l(&req.n, 1024, IFLA_GRE_PMTUDISC, &pmtudisc, 1);
+            addattr_l(&req.n, 1024, IFLA_MTU, &mtu, 2);
 
             addattr_l(&req.n, 1024, IFLA_GRE_TTL, &ttl, 1);
             addattr_l(&req.n, 1024, IFLA_GRE_TOS, &tos, 1);
