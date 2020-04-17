@@ -27,7 +27,7 @@
 #define SOFTGRED_MAX_SLOTS          4096
 #define SOFTGRED_TUN_PREFIX         "sgre" 
 #define SOFTGRED_TUN_PREFIX_MAX     10
-#define SOFTGRED_TUN_MTU            1600
+#define SOFTGRED_TUN_MTU            1462
 
 struct tunnel_bridge {
     char ifname[SOFTGRED_MAX_IFACE];

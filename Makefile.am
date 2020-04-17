@@ -58,4 +58,3 @@ DISTCLEANFILES = \
 	intltool-update 
 
 .PHONY: dist-changelog 
-
